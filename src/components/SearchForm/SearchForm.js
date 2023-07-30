@@ -1,5 +1,5 @@
 import React from 'react';
-import './Search.css'
+import './SearchForm.css'
 
 
 function Search(props) {
@@ -10,9 +10,9 @@ function Search(props) {
           <input className="form-search__input" placeholder="Фильм" required id="film" type="text" />
           <button type="submit" className="form-search__button-submit">{}</button>
       </form>
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox"/>
-        <span class="slider"></span>
+        <span className="slider"></span>
       </label>
       <div className="search__line"></div>
     </div>
