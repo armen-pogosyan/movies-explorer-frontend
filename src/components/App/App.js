@@ -43,8 +43,8 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/profile" element={<Profile onMenuClick={buttonMenuClick} loggedIn={loggedIn}/>} />
-        <Route path="/movies" element={<Movies movies={movies} onMenuClick={buttonMenuClick} loggedIn={loggedIn}/>} />
-        <Route path="/saved-movies" element={<SavedMovies movies={movies} onMenuClick={buttonMenuClick} loggedIn={loggedIn}/>} />
+        <Route path="/movies" element={<Movies movies={movies} onMenuClick={buttonMenuClick} loggedIn={loggedIn} deleteButton={false}/>} />
+        <Route path="/saved-movies" element={<SavedMovies movies={movies} onMenuClick={buttonMenuClick} loggedIn={loggedIn} deleteButton={true}/>} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <PopupMenu isOpen={isPopupMenuOpen} onClose={closeMenuPopup}/>

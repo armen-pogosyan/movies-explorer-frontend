@@ -53,6 +53,26 @@
   cursor: pointer;
 }
 
+.element__delete-button {
+  margin: 30px 0 0 22px;
+  background: url(../../images/delete-card-icon.svg);
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 14px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.element__delete-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.visible-none {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .element {
     margin: 0 30px 40px 30px;
