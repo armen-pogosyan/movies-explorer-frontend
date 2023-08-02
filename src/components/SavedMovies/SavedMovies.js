@@ -7,8 +7,10 @@ function SavedMovies ({movies, onMenuClick, loggedIn, deleteButton}) {
   return (
     <>
       <Header onMenuClick={onMenuClick} loggedIn={loggedIn} />
-      <SearchForm />
-      <MoviesCardList movies={movies} deleteButton={deleteButton} />
+      <main className="main">
+        <SearchForm />
+        <MoviesCardList movies={movies} deleteButton={deleteButton} />
+      </main>
       <Footer />
     </>
   );

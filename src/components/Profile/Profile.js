@@ -5,7 +5,7 @@ function Profile({onMenuClick,loggedIn }) {
   return (
     <>
       <Header onMenuClick={onMenuClick} loggedIn={loggedIn} />
-      <div className="profile">
+      <main className="profile">
         <h1 className="profile__title">Привет, Виталий!</h1>
         <form onSubmit={()=>{}} className="profile__form" name="form-profile" noValidate>
           <div className="profile__input-container">          
@@ -19,7 +19,7 @@ function Profile({onMenuClick,loggedIn }) {
         </form>
         <button className="profile__button-edit">Редактировать</button>
         <button className="profile__button-exit">Выйти из аккаунта</button>
-      </div>
+      </main>
     </>
   );
 }

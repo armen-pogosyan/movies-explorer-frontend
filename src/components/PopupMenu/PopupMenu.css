@@ -60,6 +60,11 @@
   border: none;
 }
 
+.popup-menu__button-close:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .popup-menu__profile {
   display: flex;
   align-items: center;

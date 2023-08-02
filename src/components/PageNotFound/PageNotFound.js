@@ -3,7 +3,6 @@ import './PageNotFound.css'
 
 function PageNotFound() {
   const navigate = useNavigate();
-  document.body.style.backgroundColor="#FFFFFF";
   return (
     <div className="not-found">
       <p className="not-found__number">404</p>

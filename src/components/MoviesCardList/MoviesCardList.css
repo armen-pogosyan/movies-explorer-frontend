@@ -27,6 +27,11 @@
   border-style: solid;
 }
 
+.movie-elements__button-yet:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
   .movie-elements__button-yet {
     width: 240px;
