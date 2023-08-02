@@ -10,7 +10,7 @@ function Card({card, deleteButton}) {
         <button className={`element__like-button ${deleteButton ? "visible-none" : ""}`} type ="button" ></button>
         <button className={`element__delete-button ${!deleteButton ? "visible-none" : ""}`} type ="button" ></button>
       </div>
-      <img src={`https://api.nomoreparties.co${card.image.url}`} className="element__image" alt={''} />
+      <img src={`https://api.nomoreparties.co${card.image.url}`} className="element__image" alt={card.nameRU} />
     </li>
   );
 }

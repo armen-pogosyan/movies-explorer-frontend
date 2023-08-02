@@ -2,8 +2,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css'
 
 function MoviesCardList({movies, deleteButton}) {
-  return (
-    
+  return (   
     <section className="movie-elements">
         <ul className="elements-list"> 
             {movies.map(movie => {

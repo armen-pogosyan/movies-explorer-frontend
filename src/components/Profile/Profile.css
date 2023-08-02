@@ -31,9 +31,8 @@
   font-weight: 400;
   line-height: normal;
   border: none;
-  width: 396px;
+  width: 410px;
   height: 17px;
-
   padding: 0 0 16px 0;
   outline: none;
   margin-top: 5px;
@@ -79,7 +78,7 @@
   line-height: normal;
   border: none;
   background-color: transparent;
-  margin-bottom: 40px;
+  margin-bottom: 70px;
 }
 
 @media screen and (max-width: 768px) {
@@ -88,11 +87,15 @@
   }
 
   .profile__form {
-    margin-top: 96px;
+    margin-top: 79px;
   }
 
   .profile__button-edit {
-    margin: 210px 0 16px 0;
+    margin: 188px 0 16px 0;
+  }
+
+  .profile__button-exit {
+    margin-bottom: 269px;
   }
 }
 

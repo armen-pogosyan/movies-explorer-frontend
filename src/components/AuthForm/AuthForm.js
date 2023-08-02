@@ -2,8 +2,10 @@ import './AuthForm.css';
 import {Link} from 'react-router-dom';
 import { useLocation} from 'react-router-dom'; 
 
-function AuthForm ({title, buttonText, children, values, handleChange, errors}) {
+function AuthForm ({title, buttonText, children, values}) {
   const location = useLocation();
+ 
+
   return (
     <>
     <div className="auth">
@@ -12,10 +14,22 @@ function AuthForm ({title, buttonText, children, values, handleChange, errors}) 
       <form onSubmit={()=>{}} className="auth__form" name="form-register" noValidate>
         {children}
         <span className="auth__hint">E-mail</span>
-        <input className="auth__input" required id="email" name="email" type="text"  value={values.email} onChange={handleChange} minLength={3}/>
+        <input className="auth__input" required
+          id="email" name="email"
+          type="text"
+          placeholder="Введите e-mail" 
+          value={values.email}
+          // onChange={handleChange}
+          minLength={3}/>
         <span className="auth__hint">Пароль</span>
-        <input className="auth__input" required  id="password" name="password" type="password" value={values.password} onChange={handleChange} minLength={3}/>
-        <span className="auth__input-error">{errors.password}</span>
+        <input className="auth__input" required
+          id="password" name="password"
+          type="password"
+          placeholder="Введите пароль"
+          value={values.password}
+          // onChange={handleChange}
+          minLength={3}/>
+        <span className="auth__input-error">Что-то пошло не так</span>
         <button type="submit" className="auth__button-submit">{buttonText}</button> 
       </form>
       {location.pathname ==="/signup"? 

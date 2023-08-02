@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import './PopupMenu.css'
-import { useNavigate,  NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 
 function Popup ({isOpen, onClose}) {
   useEffect(() => {
@@ -33,11 +33,8 @@ function Popup ({isOpen, onClose}) {
             <NavLink to="/" className="popup-menu__link" onClick={onClose} style={location.pathname==="/"? styleUnderline: {}}>Главная</NavLink>
             <NavLink to="/movies" className="popup-menu__link" onClick={onClose} style={location.pathname==="/movies"? styleUnderline: {}}>Фильмы</NavLink>
             <NavLink to="/saved-movies" className="popup-menu__link" onClick={onClose} style={location.pathname==="/saved-movies"? styleUnderline: {}}>Сохраненные фильмы</NavLink>
-          </nav>   
-          <div className="popup-menu__profile" style={location.pathname==="/profile"? styleUnderline: {}}>
-            <Link to="/profile" className="popup-menu__profile-text" onClick={onClose} >Аккаунт</Link>
-            <div className="header__icon"></div>
-          </div>   
+          </nav>           
+            <Link to="/profile" className="popup-menu__profile" onClick={onClose}></Link>    
       </div>    
     </div>
     );

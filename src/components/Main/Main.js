@@ -11,13 +11,15 @@ import Portfolio from '../Portfolio/Portfolio';
 function Main ({onMenuClick, loggedIn}) {
   return (
     <>
-      <Header onMenuClick={onMenuClick} loggedIn={loggedIn} />
-      <Promo />
-      <Navigation />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <Header onMenuClick={onMenuClick} loggedIn={true} />
+      <main className="main">
+        <Promo />
+        <Navigation />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
     </>
   );

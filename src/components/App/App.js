@@ -36,7 +36,7 @@ function App() {
     setPopupMenuOpen(true)
   }
 
-  return (
+  return (   
     <div className="page">
       <Routes>
         <Route path="/" element={<Main onMenuClick={buttonMenuClick} loggedIn={loggedIn}/>} />

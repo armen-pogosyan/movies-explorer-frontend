@@ -1,23 +1,33 @@
 import './Register.css'
 import AuthForm from '../AuthForm/AuthForm';
-import {useFormAndValidation} from '../../hooks/useFormAndValidation'
+// import {useFormAndValidation} from '../../hooks/useFormAndValidation'
 
 function Register () {
-  const {values, handleChange, errors} = useFormAndValidation({
-    email: "",
-   password: ""
- });
+//   const {values, handleChange, errors} = useFormAndValidation({
+//     email: "",
+//    password: ""
+//  });
+const values = {
+  email: "pochta@yandex.ru",
+  name: "Виталий",
+  password: "12345678910"
+}
   return (
     <>
       <AuthForm 
       title="Добро пожаловать!"
       buttonText = "Зарегистрироваться"
       values={values}
-      handleChange={handleChange}
-      errors={errors}
+      // handleChange={handleChange}
+      // errors={errors}
       >
       <span className="auth__hint">Имя</span>
-      <input className="auth__input" required id="name" name="name" type="text" value={values.name} onChange={handleChange} minLength={3}/>
+      <input className="auth__input" required
+        id="name" name="name"
+        type="text"
+        value={values.name}
+        // onChange={handleChange}
+        minLength={3}/>
       </AuthForm>
     </>
   );

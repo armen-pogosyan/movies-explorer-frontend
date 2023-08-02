@@ -67,13 +67,10 @@
   margin-bottom: 92px;
 }
 
-.popup-menu__profile-text {
-  text-decoration: none;
-  color: #000;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px; /* 114.286% */
+.popup-menu__profile {
+  background-image: url("../../images/profile_.svg");
+  width: 100px;
+  height: 32px;
 }
 
 @media screen and (max-width: 320px) {
