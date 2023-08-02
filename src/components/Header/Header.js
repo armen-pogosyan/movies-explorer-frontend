@@ -30,7 +30,7 @@ function Header({onMenuClick, loggedIn}) {
                 <NavLink to="/saved-movies" className="menu__link" style={location.pathname==="/saved-movies" ? styleUnderline:{}}>Сохраненные фильмы</NavLink>
               </nav>
               <div className="header__profile">
-                <Link to="/profile" className="header__icon" style={location.pathname==="/"?{color:"white"}:{}}></Link>
+                <Link to="/profile" className="header__icon"></Link>
               </div>
             </div>
             <button className="header__menu-button" type ="button" onClick={onMenuClick} style={location.pathname==="/"?{backgroundImage: `url(${menuIcon})`}:{}}></button>

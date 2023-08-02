@@ -47,6 +47,11 @@
   line-height: normal;
 }
 
+.popup-menu__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .popup-menu__button-close {
   background-image: url('../../images/close_icon.svg');
   background-position: center;
@@ -66,16 +71,14 @@
 }
 
 .popup-menu__profile {
-  display: flex;
-  align-items: center;
-  gap: 17px;
-  margin-bottom: 92px;
-}
-
-.popup-menu__profile {
   background-image: url("../../images/profile_.svg");
   width: 100px;
   height: 32px;
+  margin-bottom: 92px;
+}
+
+.popup-menu__profile:hover {
+opacity: 0.8;
 }
 
 @media screen and (max-width: 320px) {
