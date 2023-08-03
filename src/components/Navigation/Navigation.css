@@ -1,0 +1,28 @@
+.nav-tab {
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background-color: #F5F5F5;
+}
+
+.nav-tab__link {
+  color: #000;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 123.077% */
+  text-decoration-line: underline;
+}
+
+.nav-tab__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 500px) {
+  .nav-tab {
+    gap: 24px;
+  }
+}

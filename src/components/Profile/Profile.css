@@ -1,0 +1,130 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__title {
+  margin: 74px 0 0 0;
+  text-align: center;
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 410px;
+  margin-top: 111px;
+} 
+
+.profile__input {
+  color: #000;
+  text-align: right;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  width: 410px;
+  height: 17px;
+  padding: 0 0 16px 0;
+  outline: none;
+  margin-top: 5px;
+}
+
+.profile__input-container:first-child {
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.profile__input-title {
+  top: 7px;
+  position: absolute;
+  color: #000;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__input-container {
+  position: relative;
+  margin-top: 12px;
+}
+
+.profile__button-edit {
+  margin: 220px 0 16px 0;
+  color: #000;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background-color: transparent;
+}
+
+.profile__button-edit:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.profile__button-exit {
+  color: #EE3465;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 70px;
+}
+
+.profile__button-exit:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__title {
+    margin: 236px 0 0 0;
+  }
+
+  .profile__form {
+    margin-top: 79px;
+  }
+
+  .profile__button-edit {
+    margin: 188px 0 16px 0;
+  }
+
+  .profile__button-exit {
+    margin-bottom: 269px;
+  }
+}
+
+
+@media screen and (max-width: 450px) {
+  .profile__input {
+    width: 260px;
+  }
+
+  .profile__title {
+    margin: 70px 0 0 0;
+  }
+
+  .profile__form {
+    margin-top: 80px;
+  }
+
+  .profile__button-edit {
+    margin: 379px 0 16px 0;
+  }
+}
+
