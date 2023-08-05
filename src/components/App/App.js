@@ -8,7 +8,7 @@ import Movies from '../Movies/Movies.js';
 import SavedMovies from '../SavedMovies/SavedMovies.js';
 import PageNotFound from '../PageNotFound/PageNotFound.js';
 import PopupMenu from '../PopupMenu/PopupMenu.js';
-import {api} from '../../utils/Api.js'
+import {moviesApi} from '../../utils/MoviesApi.js'
 import './App.css';
 
 function App() {
@@ -16,17 +16,18 @@ function App() {
   const [movies, setMovies] = React.useState([])
   const [isPopupMenuOpen, setPopupMenuOpen] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false)
 
-  React.useEffect(() => {
-    api.getInitialMovies()
-    .then((result) => {
-      setMovies(result)
-    })
-      .catch(err => {
-        console.log(err)
-      })
+  // React.useEffect(() => {
+  //   api.getInitialMovies()
+  //   .then((result) => {
+  //     setMovies(result)
+  //   })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
    
-  }, []);
+  // }, []);
 
   function closeMenuPopup () {
     setPopupMenuOpen(false)
@@ -36,6 +37,19 @@ function App() {
     setPopupMenuOpen(true)
   }
 
+  function handleSubmitFormSearch() {
+    setIsLoading(true)
+    moviesApi.getInitialMovies()
+    .then((result) => {
+      setMovies(result)
+      setIsLoading(false)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+
   return (   
     <div className="page">
       <Routes>
@@ -43,7 +57,12 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/profile" element={<Profile onMenuClick={buttonMenuClick} loggedIn={loggedIn}/>} />
-        <Route path="/movies" element={<Movies movies={movies} onMenuClick={buttonMenuClick} loggedIn={loggedIn} deleteButton={false}/>} />
+        <Route path="/movies" element={<Movies movies={movies} 
+            onMenuClick={buttonMenuClick} 
+            handleSubmitFormSearch={handleSubmitFormSearch}
+            loggedIn={loggedIn}
+            deleteButton={false}
+            isLoading={isLoading}/>}/>
         <Route path="/saved-movies" element={<SavedMovies movies={movies} onMenuClick={buttonMenuClick} loggedIn={loggedIn} deleteButton={true}/>} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

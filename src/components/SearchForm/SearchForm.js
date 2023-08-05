@@ -2,11 +2,14 @@ import React from 'react';
 import './SearchForm.css'
 
 
-function Search(props) {
-
+function Search({handleSubmitFormSearch}) {
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+      handleSubmitFormSearch()
+  }
   return (
     <div className='search'>
-      <form className="form-search">
+      <form className="form-search" onSubmit={handleSubmit}>
           <input className="form-search__input" placeholder="Фильм" required id="film" type="text" />
           <button type="submit" className="form-search__button-submit"></button>
       </form>

@@ -1,9 +1,9 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css'
 
-function MoviesCardList({movies, deleteButton}) {
+function MoviesCardList({movies, deleteButton, isLoading}) {
   return (   
-    <section className="movie-elements">
+    <section className={`movie-elements ${isLoading?"movie-elements_visible":""}`}>
         <ul className="elements-list"> 
             {movies.map(movie => {
               if(movie.id<10){

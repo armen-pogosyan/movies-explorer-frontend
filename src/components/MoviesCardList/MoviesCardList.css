@@ -1,12 +1,19 @@
 .movie-elements {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.movie-elements_visible {
+  visibility: hidden;
 }
 
 .elements-list {
-  margin: 70px 0 70px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 70px;
   padding: 0;
+  column-gap: 20px;
+  justify-content: center;
 }
 
 .movie-elements__button-yet {

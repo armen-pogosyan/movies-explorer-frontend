@@ -1,16 +1,13 @@
 .element {
   display: flex;
-  justify-content: space-between;
-  max-width: 1140px;
-  height: 134px;
-  margin: 0 70px 40px 70px;
-  background: #F9F9F9;
+  flex-direction: column-reverse;
+  width: 270px;
+  justify-content: flex-end;
 }
 
 .element__image {
-  width: 220px;
-  height: 122px;
-  margin: 6px;
+  width: 270px;
+  height: 151px;
 }
 
 .element__title {
@@ -20,7 +17,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 22px 0 13px 22px;
+  margin: 22px 0 13px 0;
 }
 
 .element__movie-length {
