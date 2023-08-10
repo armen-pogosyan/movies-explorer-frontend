@@ -18,12 +18,11 @@
 
 .auth__title {
   color: #000;
-  font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top: 40px;
+  margin: 40px 0 40px 0;
 }
 
 .auth__hint {
@@ -33,7 +32,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: 24px;
 }
 
 .auth__input {
@@ -51,7 +49,7 @@
   margin-top: 5px;
 }
 
-.auth__input:nth-child(6) {
+.auth__input:invalid {
   color: #EE3465;
 }
 
@@ -84,6 +82,10 @@
   background-color: #2BE080;
 }
 
+.auth__button-submit_status_disabled {
+  background-color: #F8F8F8;
+}
+
 .auth__button-submit:hover {
   opacity: 0.85;
   cursor: pointer;
@@ -91,6 +93,7 @@
 
 .auth__input-error {
   margin-top: 6px;
+  min-height: 25px;
   width: 396px;
   display: flex;
   color: #EE3465;

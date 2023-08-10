@@ -13,6 +13,7 @@
   margin: 70px;
   padding: 0;
   column-gap: 20px;
+  row-gap: 38px;
   justify-content: center;
 }
 
@@ -39,7 +40,21 @@
   cursor: pointer;
 }
 
+.movie-elements__button-yet_visible_no {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .elements-list {
+    margin: 70px 30px 70px 30px;
+  }
+}
+
 @media screen and (max-width: 500px) {
+  .elements-list {
+    margin: 70px auto 70px auto;
+  }
+  
   .movie-elements__button-yet {
     width: 240px;
   }
