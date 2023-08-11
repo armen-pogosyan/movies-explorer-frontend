@@ -9,3 +9,7 @@ https://cloud.mail.ru/public/CLqk/aFkLX2ykQ
 ## Ссылка на сайт
 
 https://diploma-project.nomoreparties.co/
+
+## Ссылка пул реквест
+
+https://github.com/armen11777/movies-explorer-frontend/pull/2
