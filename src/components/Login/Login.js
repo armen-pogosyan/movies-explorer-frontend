@@ -4,7 +4,7 @@ import {useFormAndValidation} from '../../hooks/useFormAndValidation'
 function Login ({loginUser}) {
   const {values, handleChange, errors, isValid} = useFormAndValidation({
     email: "",
-    password: ""
+    password: "",
  });
 
   const handleSubmit = (e)=> {

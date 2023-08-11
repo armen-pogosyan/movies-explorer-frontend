@@ -44,11 +44,12 @@ function App() {
 
     //Проверка токена при загрузке страницы
     React.useEffect(() => {
-      if (!localStorage.getItem('jwt')){
+      const token = localStorage.getItem('jwt')
+      if (!token){
         setLoggedIn(false)
         return
       }
-      mainApi.checkToken()
+      mainApi.checkToken(token)
       .then((user) => {
         if (user){
           setLoggedIn(true);

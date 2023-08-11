@@ -32,7 +32,7 @@ function Profile({onMenuClick,loggedIn, updateUser, signOut}) {
             <input className="profile__input" required id="email" name="email" type="email" placeholder="email" value={values.email ?? currentUser.email} onChange={handleChange}/>
           </div>
         </form>
-        <button type="submit" form="form-profile" className={`profile__button-edit ${!isValid?"profile__button-edit_status_disabled":""}`} disabled={!isValid} >Редактировать</button>
+        <button type="submit" form="form-profile" className={`profile__button-edit ${((currentUser.email===values.email) && (currentUser.name===values.name))?"profile__button-edit_status_disabled":""}`} disabled={((currentUser.email===values.email) && (currentUser.name===values.name))} >Редактировать</button>
         <button type="button" className="profile__button-exit" onClick={signOut}>Выйти из аккаунта</button>
       </main>
     </>

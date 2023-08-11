@@ -6,7 +6,7 @@ const getJson = (res)=>{
   if (res.ok) {
     return res.json();
   }
-  return Promise.reject(`Ошибка: ${res.status}`);
+  return Promise.reject(res.json());
 }
 
 const register = (name, password, email) => {
@@ -18,12 +18,7 @@ const register = (name, password, email) => {
     },
     body: JSON.stringify({password, email, name})
   })
-  .then((res)=>{
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res.json());
-  })
+  .then(getJson)
 };
 
 const login = (password, email) => {
@@ -35,12 +30,7 @@ const login = (password, email) => {
     },
     body: JSON.stringify({password, email})
   })
-  .then((res)=>{
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res.json());
-  })
+  .then(getJson)
 };
 
 const setUserInfo = (name, email) => {
@@ -53,12 +43,7 @@ const setUserInfo = (name, email) => {
     },
     body: JSON.stringify({name, email})
   })
-  .then((res)=>{
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res.json());
-  })
+  .then(getJson)
 }
 
 
@@ -101,13 +86,13 @@ const deleteMovie = (id) => {
   .then(getJson)
 }
 
-const checkToken = () => {
+const checkToken = (token_) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token_}`,
     }
   })
   .then(getJson)
