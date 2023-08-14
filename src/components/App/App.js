@@ -49,7 +49,6 @@ function App() {
     }, [])
 
     React.useEffect(() => {  // Карточки с сервера MoviesApi
-      if (localStorage.getItem('jwt')) {
         moviesApi.getInitialMovies()
         .then((result) => {
           setMovies(result)
@@ -58,7 +57,6 @@ function App() {
           console.log(err)
           setIsErrorLoadingMovies(true)
         })
-      }
     }, [])
 
     //Проверка токена при загрузке страницы
