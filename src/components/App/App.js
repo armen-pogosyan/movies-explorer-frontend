@@ -236,7 +236,6 @@ function App() {
   }
 
   function deleteMovie (cardId){
-    console.log(cardId)
     mainApi.deleteMovie(cardId)
     .then(() => {
       setFoundSavedMovisesList(foundSavedMovisesList.filter(card =>card.movieId !== cardId))
