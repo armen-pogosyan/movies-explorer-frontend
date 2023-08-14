@@ -5,20 +5,26 @@ import './SearchForm.css'
 function Search({handleSubmitFormSearch, queryStr, switchStatus}) {
   const [value, setValue] = React.useState(queryStr);
   const [checked, setChecked] = React.useState(switchStatus);
+  const [errorMassege, setErrorMassege] = React.useState("Фильм");
 
   const handleSubmit = (e)=>{
+    
     e.preventDefault();
+    if (value === "") {
+      setErrorMassege("Нужно ввести ключевое слово");
+      return
+    }
     handleSubmitFormSearch(value, checked)
   }
 
   function handleChange(e) {
     setValue(e.target.value);
   }
-
+  
   return (
     <div className='search'>
-      <form className="form-search" onSubmit={handleSubmit}>
-          <input className="form-search__input" placeholder="Фильм" required id="film" type="text" value={value} onChange={handleChange}/>
+      <form className="form-search" onSubmit={handleSubmit} noValidate>
+          <input className={`form-search__input ${errorMassege!=="Фильм" ? "form-search__input_placeholder" : ""}`} placeholder={errorMassege} required id="film" type="text" value={value} onChange={handleChange}/>
           <button type="submit" className="form-search__button-submit"></button>
       </form>
       <label className="switch">

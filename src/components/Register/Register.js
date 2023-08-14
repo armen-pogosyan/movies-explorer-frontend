@@ -2,7 +2,7 @@ import './Register.css'
 import AuthForm from '../AuthForm/AuthForm';
 import {useFormAndValidation} from '../../hooks/useFormAndValidation'
 
-function Register ({registerUser}) {
+function Register ({registerUser, isLockForm}) {
   const {values, handleChange, errors, isValid} = useFormAndValidation({
     name:"",
     email: "",
@@ -29,7 +29,8 @@ function Register ({registerUser}) {
         type="text"
         value={values.name}
         onChange={handleChange}
-        minLength={3}/>
+        minLength={3}
+        isLockForm={isLockForm}/>
         <span className="auth__input-error">{errors.name}</span>
       </AuthForm>
     </>

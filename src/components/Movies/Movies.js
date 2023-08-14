@@ -4,38 +4,10 @@ import Footer from "../Footer/Footer";
 import Header from '../Header/Header';
 import Preloader from '../Preloader/Preloader';
 import { useState, useEffect} from 'react';
+import { useResize } from "../../utils/use-resize";
 
-function Movies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, isSearch, savedMovie, savedMovisesList, deleteMovie}) {
-
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => { 
-    const handleResize = (event) => {
-      setTimeout(()=> {
-        setWidth(event.target.innerWidth);
-      }, 1000)
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  let cardsLoad = 0;
-  let numberOfItems = 0;
-
-  if (width > 768) {
-    cardsLoad = 16;
-    numberOfItems = 4;
-  }
-  else if (width <= 768 && width > 480 ) {
-    cardsLoad = 8;
-    numberOfItems = 2;
-  }
-  else if (width <= 480) {
-    cardsLoad = 5;
-    numberOfItems = 2;
-  }
-
+function Movies ({onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, isSearch, handleSavedMovie, savedMovisesList, deleteMovie, foundMovies}) {
+  const {width, cardsLoad, numberOfItems} = useResize()
   const [loadedСards, setLoadedСards] = useState(cardsLoad);
   
   useEffect(()=> {
@@ -46,14 +18,12 @@ function Movies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoadi
     setLoadedСards(loadedСards + numberOfItems)
   }
 
-
   const queryResult = JSON.parse(localStorage.getItem('queryResult'));  //получаем данные предыдущего запроса из локального хранилища
   const {queryResultCardList=[], queryStr="", switchStatus=false} = queryResult || {}  // и если переменная isSearch = false тогда  выводим данне запроса
 
-
   let drewMovies;
   if(isSearch) {
-    drewMovies = movies;
+    drewMovies = foundMovies;
   }
   else {
     drewMovies = queryResultCardList;
@@ -67,12 +37,12 @@ function Movies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoadi
         <Preloader isLoading={isLoading}/>
         {!isErrorLoadingMovies? // если ошибка сервера выводим собщение
         //если поиск и длина массива = 0 тогда выводим ошибку
-          !(drewMovies.length === 0) ?
+          !(drewMovies.length === 0 && isSearch) ?
             <MoviesCardList movies={drewMovies}
               deleteButton={false}
               isLoading={isLoading}
               width={width}
-              savedMovie={savedMovie}
+              handleSavedMovie={handleSavedMovie}
               savedMovisesList={savedMovisesList}
               deleteMovie={deleteMovie}
               showMoreCards={showMoreCards}

@@ -1,7 +1,8 @@
+import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import {useFormAndValidation} from '../../hooks/useFormAndValidation'
 
-function Login ({loginUser}) {
+function Login ({loginUser, isLockForm}) {
   const {values, handleChange, errors, isValid} = useFormAndValidation({
     email: "",
     password: "",
@@ -23,6 +24,7 @@ function Login ({loginUser}) {
       errors={errors}
       isValid={isValid}
       handleSubmit={handleSubmit}
+      isLockForm={isLockForm}
       />
       
     </>

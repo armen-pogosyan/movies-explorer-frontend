@@ -1,30 +1,10 @@
-// import SearchForm from "../SearchForm/SearchForm";
-// import MoviesCardList from "../MoviesCardList/MoviesCardList";
-// import Footer from "../Footer/Footer";
-// import Header from '../Header/Header';
-
-// function SavedMovies ({movies, onMenuClick, loggedIn, deleteButton}) {
-//   return (
-//     <>
-//       <Header onMenuClick={onMenuClick} loggedIn={loggedIn} />
-//       <main className="main">
-//         <SearchForm />
-//         <MoviesCardList movies={movies} deleteButton={deleteButton} />
-//       </main>
-//       <Footer />
-//     </>
-//   );
-// }
-
-// export default SavedMovies;
-
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Header from '../Header/Header';
 import Preloader from '../Preloader/Preloader';
 
-function SavedMovies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, deleteMovie}) {
+function SavedMovies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, deleteMovie, foundSavedMovisesList, isSearch}) {
 
   return (
     <>
@@ -34,8 +14,13 @@ function SavedMovies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, is
         <Preloader isLoading={isLoading}/>
         {!isErrorLoadingMovies? // если ошибка сервера выводим собщение
         //если поиск и длина массива = 0 тогда выводим ошибку
-          !(movies.length === 0) ?
-            <MoviesCardList movies={movies} deleteButton={true} isLoading={isLoading} deleteMovie={deleteMovie} savedMovisesList={movies} loadedСards={movies.length}/>:
+          !(movies.length === 0 && isSearch) ?
+            <MoviesCardList movies={isSearch? foundSavedMovisesList:movies}
+                deleteButton={true}
+                isLoading={isLoading}
+                deleteMovie={deleteMovie}
+                savedMovisesList={movies}
+                loadedСards={movies.length}/>:
             <p className="movies__error" style={{textAlign : "center"}}>Ничего не найдено</p>
           :<p className="movies__error" style={{textAlign : "center"}}>
             Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз

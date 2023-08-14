@@ -7,6 +7,7 @@
 .form-search {
   max-width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   position: relative;
   align-items: center;
@@ -21,6 +22,10 @@
   background: #F9F9F9;
   border: none;
   text-indent: 22px;
+}
+
+.form-search__input_placeholder::placeholder {
+  color: red;
 }
 
 .form-search__button-submit {
@@ -85,6 +90,16 @@
   bottom: 2px;
   background-color: #F5F5F5;
   transition: .4s;
+}
+
+.form-search__input-error {
+  width: 100%;
+  min-height: 25px;
+  color: #EE3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 input:checked + .slider:before {

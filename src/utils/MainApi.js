@@ -1,6 +1,5 @@
 const BASE_URL = 'https://api.diploma-project.nomoredomains.work';
 //const BASE_URL = 'http://localhost:3001';
-const token = localStorage.getItem("jwt");
 
 const getJson = (res)=>{
   if (res.ok) {
@@ -34,6 +33,7 @@ const login = (password, email) => {
 };
 
 const setUserInfo = (name, email) => {
+  const token = localStorage.getItem("jwt");
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH',
     headers: {
@@ -48,6 +48,7 @@ const setUserInfo = (name, email) => {
 
 
 const addMovies = (movie) => {
+  const token = localStorage.getItem("jwt");
   const {country, description, director, duration, image, nameEN, nameRU, trailerLink, year, id} = movie;
   const thumbnail = trailerLink;
   const imageURL =`https://api.nomoreparties.co${image.url}`
@@ -64,6 +65,7 @@ const addMovies = (movie) => {
 }
 
 const getMovies = () => {
+  const token = localStorage.getItem("jwt");
   return fetch(`${BASE_URL}/movies`, {
     method: 'GET',
     headers: {
@@ -74,6 +76,7 @@ const getMovies = () => {
 }
 
 const deleteMovie = (id) => {
+  const token = localStorage.getItem("jwt");
   return fetch(`${BASE_URL}/movies/${id}`, {
     method: 'DELETE',
     headers: {

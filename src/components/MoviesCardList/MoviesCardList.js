@@ -1,7 +1,7 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-function MoviesCardList({movies, deleteButton, isLoading, savedMovie, savedMovisesList, deleteMovie, showMoreCards, loadedСards}) {
+function MoviesCardList({movies, deleteButton, isLoading, handleSavedMovie, savedMovisesList, deleteMovie, showMoreCards, loadedСards}) {
 
  
   return (   
@@ -9,7 +9,7 @@ function MoviesCardList({movies, deleteButton, isLoading, savedMovie, savedMovis
         <ul className="elements-list"> 
             {movies.slice(0, loadedСards).map((movie) => {
               const isLiked = savedMovisesList.some(i => i.movieId === movie.id);
-              return(<MoviesCard key={deleteButton ? movie.movieId: movie.id} card={movie} deleteButton={deleteButton} savedMovie={savedMovie} isLiked={isLiked} deleteMovie={deleteMovie}/>)              
+              return(<MoviesCard key={deleteButton ? movie.movieId: movie.id} card={movie} deleteButton={deleteButton} savedMovie={handleSavedMovie} isLiked={isLiked} deleteMovie={deleteMovie}/>)              
              })       
             }
         </ul>

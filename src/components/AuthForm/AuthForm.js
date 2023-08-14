@@ -2,7 +2,7 @@ import './AuthForm.css';
 import {Link} from 'react-router-dom';
 import { useLocation} from 'react-router-dom'; 
 
-function AuthForm ({title, buttonText, children, values, handleSubmit, handleChange, errors, isValid}) {
+function AuthForm ({title, buttonText, children, values, handleSubmit, handleChange, errors, isValid, isLockForm}) {
   const location = useLocation();
 
   return (
@@ -10,6 +10,7 @@ function AuthForm ({title, buttonText, children, values, handleSubmit, handleCha
       <Link to="/" className="auth__logo"></Link>
       <h2 className="auth__title">{title}</h2>
       <form onSubmit={handleSubmit} className="auth__form" name="form-register" noValidate>
+      <fieldset  disabled={isLockForm ? true: false} style={{border: "none"}}> 
         {children}
         <span className="auth__hint">E-mail</span>
         <input className="auth__input" 
@@ -18,7 +19,7 @@ function AuthForm ({title, buttonText, children, values, handleSubmit, handleCha
           placeholder="Введите e-mail" 
           value={values.email}
           onChange={handleChange}
-          required
+          pattern ="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
           />
         <span className="auth__input-error">{errors.email}</span>
         <span className="auth__hint">Пароль</span>
@@ -31,6 +32,7 @@ function AuthForm ({title, buttonText, children, values, handleSubmit, handleCha
           minLength={8}/>
         <span className="auth__input-error">{errors.password}</span>
         <button type="submit" className={`auth__button-submit ${!isValid?"auth__button-submit_status_disabled":""}`} disabled={!isValid}>{buttonText}</button> 
+        </fieldset>
       </form>
       {location.pathname ==="/signup"? 
       <div className="auth__link-auth"><p className="auth__text-status">Уже зарегистрированы?</p><Link to="/signin" className="signup__link">&nbsp;Войти</Link></div>:

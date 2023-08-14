@@ -20,7 +20,7 @@ function Card({card, deleteButton, savedMovie, isLiked, deleteMovie}) {
 
   return (
     <li className="element">
-      <img src={`${deleteButton ? card.image:`https://api.nomoreparties.co${card.image.url}`}`} className="element__image" alt={card.nameRU} />
+      <a href={card.trailerLink} target="_blank" rel="noreferrer"><img src={`${deleteButton ? card.image:`https://api.nomoreparties.co${card.image.url}`}`} className="element__image" alt={card.nameRU} /></a>
       <div className="element__group">
         <p className="element__title">{card.nameRU}</p>
         <button className={`element__like-button ${deleteButton ? "visible-none" : ""} ${isLiked ? "element__like-button_status_active": ""}`} type ="button" onClick={handleClicklike}></button>
