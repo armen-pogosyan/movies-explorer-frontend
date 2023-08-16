@@ -8,7 +8,7 @@ export const useResize = () => {
     const handleResize = (event) => {
       setTimeout(()=> {
         setWidth(event.target.innerWidth);
-      }, 1000)
+      }, 1)
     };
     window.addEventListener('resize', handleResize);
     return () => {
@@ -20,11 +20,15 @@ export const useResize = () => {
     cardsLoad = 16;
     numberOfItems = 4;
   }
-  else if (width > 480 && width < 1280) {
-    numberOfItems = Math.floor((width + 20 - 60) / 290);
-    cardsLoad = numberOfItems * 4;
+  else if (width > 989 && width < 1280) {
+    numberOfItems = 3;
+    cardsLoad = 12;
   }
-  else if (width <= 480) {
+  else if (width > 757 && width <= 989) {
+    numberOfItems = 2;
+    cardsLoad = 8;
+  }
+  else if (width <= 757) {
     cardsLoad = 5;
     numberOfItems = 2;
   }
