@@ -38,6 +38,10 @@
   margin-top: 5px;
 }
 
+.profile__input:invalid {
+  color: #EE3465;
+}
+
 .profile__input-container:first-child {
   border-bottom: 1px solid #E8E8E8;
 }
@@ -67,6 +71,10 @@
   line-height: normal;
   border: none;
   background-color: transparent;
+}
+
+.profile__button-edit_status_disabled {
+  color: #F8F8F8;
 }
 
 .profile__button-edit:hover {

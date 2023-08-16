@@ -23,4 +23,4 @@ class Api {
     .then(this._getJson)
 }
 }
-export const api = new Api('https://api.nomoreparties.co/beatfilm-movies');
+export const moviesApi = new Api('https://api.nomoreparties.co/beatfilm-movies');

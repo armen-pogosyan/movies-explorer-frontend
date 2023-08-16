@@ -1,18 +1,18 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
-import './MoviesCardList.css'
+import './MoviesCardList.css';
 
-function MoviesCardList({movies, deleteButton}) {
+function MoviesCardList({movies, deleteButton, isLoading, handleSavedMovie, savedMoviesList, deleteMovie, showMoreCards, loadedСards}) {
+ 
   return (   
-    <section className="movie-elements">
+    <section className={`movie-elements ${isLoading?"movie-elements_visible":""}`}>
         <ul className="elements-list"> 
-            {movies.map(movie => {
-              if(movie.id<10){
-                return(<MoviesCard key={movie.id} card={movie} deleteButton={deleteButton}/>)
-              }             
-            })}
+            {movies.slice(0, loadedСards).map((movie) => {
+              const isLiked = savedMoviesList.some(i => i.movieId === movie.id);
+              return(<MoviesCard key={deleteButton ? movie.movieId: movie.id} card={movie} deleteButton={deleteButton} savedMovie={handleSavedMovie} isLiked={isLiked} deleteMovie={deleteMovie}/>)              
+             })       
+            }
         </ul>
-
-        <button className="movie-elements__button-yet" type ="button">ЕЩЕ</button>
+        <button className={`movie-elements__button-yet ${loadedСards>=movies.length?"movie-elements__button-yet_visible_no":""}`} type ="button" onClick={showMoreCards}>ЕЩЕ</button>
       </section>
   );
 }

@@ -11,7 +11,7 @@ import Portfolio from '../Portfolio/Portfolio';
 function Main ({onMenuClick, loggedIn}) {
   return (
     <>
-      <Header onMenuClick={onMenuClick} loggedIn={true} />
+      <Header onMenuClick={onMenuClick} loggedIn={loggedIn} />
       <main className="main">
         <Promo />
         <Navigation />

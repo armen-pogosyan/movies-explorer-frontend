@@ -1,47 +1,49 @@
 .element {
   display: flex;
-  justify-content: space-between;
-  max-width: 1140px;
-  height: 134px;
-  margin: 0 70px 40px 70px;
-  background: #F9F9F9;
+  flex-direction: column;
+  width: 270px;
 }
 
 .element__image {
-  width: 220px;
-  height: 122px;
-  margin: 6px;
+  width: 270px;
+  height: 151px;
+}
+.element__group {
+  display: flex;  
+  margin-top: 14px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #E8E8E8;
+  justify-content: space-between;
+  min-height: 45px;
 }
 
 .element__title {
-  color: #000;
-  font-family: Inter;
-  font-size: 18px;
+  margin: 0;
+  color: var(--content-content-primary, #000);
+  font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 22px 0 13px 22px;
 }
 
 .element__movie-length {
   color: #A0A0A0;
-  font-family: Inter;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin: 0 0 0 22px;
+  margin: 6px 0 0 0;
 }
 
 .element__like-button {
-  margin: 30px 0 0 22px;
+  margin: 2px 0 0 5px;
   background: url(../../images/save5d.svg);
   background-repeat: no-repeat;
   height: 12px;
   width: 14px;
   border: none;
   background-color: transparent;
-  padding: 0;
+  padding-left: 5px;
 }
 
 .element__like-button_status_active {
@@ -75,21 +77,21 @@
 
 @media screen and (max-width: 768px) {
   .element {
-    margin: 0 30px 40px 30px;
+    width: 339px;
+  }
+  .element__image {
+    width: 339px;
+    height: 190px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .element {
-    margin: 0 10px 40px 10px;
-    flex-direction: column-reverse;
-    height: auto;
-    align-items: center;
+    width: 300px;
   }
   .element__image {
     width: 300px;
     height: 168px;
-    margin: 0;
   }
 
   .element__group {

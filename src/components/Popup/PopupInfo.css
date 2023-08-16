@@ -1,0 +1,27 @@
+.popup-info__content {
+  display: flex;
+  position: relative;
+  width: 430px;
+  height: 250px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  flex-direction: column;
+
+}
+.popup-info__close {
+  margin-top: 30px;
+  width: 250px;
+  height: 40px;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  background-color: #2BE080;  
+}
