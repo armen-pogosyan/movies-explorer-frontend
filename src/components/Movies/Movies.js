@@ -18,6 +18,10 @@ function Movies ({onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isEr
     setLoadedСards(loadedСards + numberOfItems)
   }
 
+  function setNumberCards() {
+    setLoadedСards(cardsLoad)
+  }
+
   const queryResult = JSON.parse(localStorage.getItem('queryResult'));  //получаем данные предыдущего запроса из локального хранилища
   const {queryResultCardList=[], queryStr="", switchStatus=false} = queryResult || {}  // и если переменная isSearch = false тогда  выводим данне запроса
 
@@ -33,7 +37,7 @@ function Movies ({onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isEr
     <>
       <Header onMenuClick={onMenuClick} loggedIn={loggedIn}/>
       <main className="main">
-        <SearchForm handleSubmitFormSearch={handleSubmitFormSearch} queryStr={queryStr} switchStatus={switchStatus}/>
+        <SearchForm handleSubmitFormSearch={handleSubmitFormSearch} queryStr={queryStr} switchStatus={switchStatus} setNumberCards={setNumberCards}/>
         <Preloader isLoading={isLoading}/>
         {!isErrorLoadingMovies? // если ошибка сервера выводим собщение
         //если поиск и длина массива = 0 тогда выводим ошибку

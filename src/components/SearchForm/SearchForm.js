@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchForm.css'
 
 
-function Search({handleSubmitFormSearch, queryStr, switchStatus}) {
+function Search({handleSubmitFormSearch, queryStr, switchStatus, setNumberCards}) {
   const [value, setValue] = React.useState(queryStr);
   const [checked, setChecked] = React.useState(switchStatus);
   const [errorMassege, setErrorMassege] = React.useState("Фильм");
@@ -15,6 +15,7 @@ function Search({handleSubmitFormSearch, queryStr, switchStatus}) {
       return
     }
     handleSubmitFormSearch(value, checked)
+    setNumberCards()
   }
 
   function handleChange(e) {
