@@ -1,5 +1,5 @@
-//const BASE_URL = 'https://api.diploma-project.nomoredomains.work';
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://api.diploma-project.nomoredomains.work';
+//const BASE_URL = 'http://localhost:3001';
 
 const getJson = (res)=>{
   if (res.ok) {
