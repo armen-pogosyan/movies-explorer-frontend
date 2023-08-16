@@ -77,11 +77,11 @@
 
 @media screen and (max-width: 768px) {
   .element {
-    width: 157px;
+    width: 339px;
   }
   .element__image {
-    width: 157px;
-    height: 87px;
+    width: 339px;
+    height: 190px;
   }
 }
 

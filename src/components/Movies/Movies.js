@@ -6,7 +6,7 @@ import Preloader from '../Preloader/Preloader';
 import { useState, useEffect} from 'react';
 import { useResize } from "../../utils/use-resize";
 
-function Movies ({onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, isSearch, handleSavedMovie, savedMovisesList, deleteMovie, foundMovies}) {
+function Movies ({onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, isSearch, handleSavedMovie, savedMoviesList, deleteMovie, foundMovies}) {
   const {width, cardsLoad, numberOfItems} = useResize()
   const [loadedСards, setLoadedСards] = useState(cardsLoad);
   
@@ -43,7 +43,7 @@ function Movies ({onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isEr
               isLoading={isLoading}
               width={width}
               handleSavedMovie={handleSavedMovie}
-              savedMovisesList={savedMovisesList}
+              savedMoviesList={savedMoviesList}
               deleteMovie={deleteMovie}
               showMoreCards={showMoreCards}
               loadedСards={loadedСards}/>:

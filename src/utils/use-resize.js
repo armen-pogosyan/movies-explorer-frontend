@@ -16,14 +16,19 @@ export const useResize = () => {
     };
   }, []);
 
-  if (width > 480) {
+  if (width >= 1280) {
     cardsLoad = 16;
     numberOfItems = 4;
+  }
+  else if (width > 480 && width < 1280) {
+    numberOfItems = Math.floor((width + 20 - 60) / 290);
+    cardsLoad = numberOfItems * 4;
   }
   else if (width <= 480) {
     cardsLoad = 5;
     numberOfItems = 2;
   }
+
 
   return {
     width,

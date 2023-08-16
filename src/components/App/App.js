@@ -32,41 +32,24 @@ function App() {
   const [isSearch, setIsSearch] = React.useState(false); // Произведен поиск через форму 
   const [isSearchSavedMovies, setSearchSavedMovies] = React.useState(false); // Произведен поиск через форму 
   const [currentUser, setCurrentUser] = React.useState({});
-  const [savedMovisesList, setSavedMovisesList] = React.useState([]);
+  const [savedMoviesList, setSavedMoviesList] = React.useState([]);
   const [foundSavedMovisesList, setFoundSavedMovisesList] = React.useState([]);
   const [isLockForm, setIsLockForm] = React.useState(false)
 
   React.useEffect(() => {
     if (localStorage.getItem('jwt')) {
-      mainApi.getMovies()
-      .then((result) => {
-        setSavedMovisesList(result)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      }
-    }, [])
-
-    React.useEffect(() => {  // Карточки с сервера MoviesApi
-        moviesApi.getInitialMovies()
-        .then((result) => {
-          setMovies(result)
-        })
-        .catch(err => {
-          console.log(err)
-          setIsErrorLoadingMovies(true)
-        })
-    }, [])
+      getUserCards()
+    }
+  }, [])
 
     //Проверка токена при загрузке страницы
-    React.useEffect(() => {
-      const token = localStorage.getItem('jwt')
-      if (!token){
-        setLoggedIn(false)
-        return
-      }
-      mainApi.checkToken(token)
+  React.useEffect(() => {
+    const token = localStorage.getItem('jwt')
+    if (!token){
+      setLoggedIn(false)
+      return
+    }
+    mainApi.checkToken(token)
       .then((user) => {
         if (user){
           setLoggedIn(true);
@@ -77,7 +60,7 @@ function App() {
       .catch(err => {
         console.log(err)
       })
-    }, [loggedIn])
+  }, [loggedIn])
 
  
   function closeAllPopups() {   // Закрытие попапов
@@ -121,14 +104,41 @@ function App() {
   }
 
   function handleSubmitFormSearch(value, checked) { //Поиск фильма по строке
-    //setIsLoading(true) //выводим прелоадер
+    if (movies.length === 0) {
+      setIsLoading(true)
+      moviesApi.getInitialMovies()
+        .then((result) => {
+          setMovies(result)
+          setIsLoading(false)
+          wordSearchMovies(result, value, checked)
+        })
+        .catch(err => {
+          console.log(err)
+          setIsErrorLoadingMovies(true)
+          setIsLoading(false)
+        })
+        
+    }
     wordSearchMovies(movies, value, checked)
-    //setIsLoading(false)
+  }
+
+  function getUserCards () {
+    mainApi.getMovies()
+    .then((result) => {
+      setSavedMoviesList(result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   function handleSubmitFormSearchSaved(value, checked) { //Поиск фильма по строке в сохраненных
-    setFoundSavedMovisesList(wordSearchStr (savedMovisesList, value, checked))
+    setFoundSavedMovisesList(wordSearchStr (savedMoviesList, value, checked))
     setSearchSavedMovies(true)
+  }
+
+  function cancelSarch() {
+    setSearchSavedMovies(false)
   }
 
   function registerUser({name, email, password}) {
@@ -162,8 +172,8 @@ function App() {
           name: data.name,
           email: email,
          })
-         getMoviesUser()
          setIsLockForm(false)
+         getUserCards()
        }
      })
      .catch(err => {
@@ -210,36 +220,35 @@ function App() {
     localStorage.removeItem('queryResult')
   }
 
-  function getMoviesUser () {
-    setIsLoading(true)
-    if (localStorage.getItem('jwt')) {
-      mainApi.getMovies()
-      .then((result) => {
-        setSavedMovisesList(result)
-        setIsLoading(false)
-      })
-      .catch(err => {
-        setIsLoading(false)
-        console.log(err)
-      })
-      }
+  function addMoviesUser (card) {  // добавление карточки и лайка
+    const newArr = savedMoviesList.slice(0)
+    newArr.push(card)
+    setSavedMoviesList(newArr);
   }
 
-  function handleSavedMovie(movie) {
-    mainApi.addMovies(movie)
-    .then(() => {
-      getMoviesUser()
+  function deleteMoviesUser (cardId) {
+    const newArr = savedMoviesList.filter((i) => i.movieId !==cardId)
+    setSavedMoviesList(newArr);
+    if (isSearchSavedMovies) {
+      const newArrFind = foundSavedMovisesList.filter((i) => i.movieId !==cardId);
+      setFoundSavedMovisesList(newArrFind)
+    }
+  }
+
+  function handleSavedMovie(card) {  // Добавить(поставить лайк) карточку фильма
+    mainApi.addMovies(card)
+    .then((likeCard) => {
+      addMoviesUser(likeCard)
     })
     .catch(err => {
       console.log(err)
     })
   }
 
-  function deleteMovie (cardId){
+  function deleteMovie (cardId){  // удаление карточек
     mainApi.deleteMovie(cardId)
-    .then(() => {
-      setFoundSavedMovisesList(foundSavedMovisesList.filter(card =>card.movieId !== cardId))
-      getMoviesUser()
+    .then((cardDelete) => {
+      deleteMoviesUser(cardDelete.movieId)
     })
     .catch(err => {
       console.log(err)
@@ -263,18 +272,19 @@ function App() {
                 isErrorLoadingMovies={isErrorLoadingMovies}
                 isSearch={isSearch}
                 handleSavedMovie={handleSavedMovie}
-                savedMovisesList={savedMovisesList}
+                savedMoviesList={savedMoviesList}
                 deleteMovie={deleteMovie}/>}
                 />
             <Route path="/saved-movies" element={<ProtectedRouteElement element={SavedMovies}
-                movies={savedMovisesList}
+                movies={savedMoviesList}
                 foundSavedMovisesList={foundSavedMovisesList}
                 onMenuClick={buttonMenuClick}
                 loggedIn={loggedIn}
                 deleteButton={true}
                 deleteMovie={deleteMovie}
                 handleSubmitFormSearch={handleSubmitFormSearchSaved}
-                isSearch={isSearchSavedMovies} />} />
+                isSearch={isSearchSavedMovies}
+                cancelSarch={cancelSarch} />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>
       </CurrentUserContext.Provider>

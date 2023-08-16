@@ -1,10 +1,17 @@
+import React from 'react';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Header from '../Header/Header';
 import Preloader from '../Preloader/Preloader';
 
-function SavedMovies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, deleteMovie, foundSavedMovisesList, isSearch}) {
+function SavedMovies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, isLoading, isErrorLoadingMovies, deleteMovie, foundSavedMovisesList, isSearch, cancelSarch}) {
+  
+  React.useEffect(()=>{
+    return () => {
+     cancelSarch()
+    }
+   }, [])
 
   return (
     <>
@@ -19,7 +26,7 @@ function SavedMovies ({movies, onMenuClick, loggedIn, handleSubmitFormSearch, is
                 deleteButton={true}
                 isLoading={isLoading}
                 deleteMovie={deleteMovie}
-                savedMovisesList={movies}
+                savedMoviesList={movies}
                 loadedСards={movies.length}/>:
             <p className="movies__error" style={{textAlign : "center"}}>Ничего не найдено</p>
           :<p className="movies__error" style={{textAlign : "center"}}>
